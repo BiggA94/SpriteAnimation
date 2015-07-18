@@ -1,4 +1,4 @@
-package test.application;
+package test.application.animation.classes;
 
 import static org.junit.Assert.*;
 
