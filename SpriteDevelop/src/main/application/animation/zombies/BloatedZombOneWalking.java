@@ -1,8 +1,8 @@
 package application.animation.zombies;
 
 import application.Main;
-import application.animation.SpriteHandler;
-import application.animation.Zombie;
+import application.animation.classes.SpriteHandler;
+import application.animation.classes.Zombie;
 import application.animation.util.ZFAnimation;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;

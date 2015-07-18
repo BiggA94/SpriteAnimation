@@ -6,8 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
 
-import application.animation.SpriteAnimation;
-import application.animation.SpriteHandler;
+import application.animation.classes.SpriteAnimation;
+import application.animation.classes.SpriteHandler;
 import application.animation.util.SpriteMap;
 import application.animation.util.ZFAnimation;
 import javafx.scene.image.ImageView;

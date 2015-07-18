@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import application.animation.SpriteHandler;
+import application.animation.classes.SpriteHandler;
 import application.animation.util.SpriteMap;
 import application.animation.util.ZFAnimation;
 import javafx.geometry.Rectangle2D;
