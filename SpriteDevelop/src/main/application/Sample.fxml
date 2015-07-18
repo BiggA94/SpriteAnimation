@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.GridPane?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SampleController">
+   <center>
+      <StackPane fx:id="root" alignment="TOP_LEFT" onMouseClicked="#root_clicked">
+      	<children>
+      		<GridPane fx:id="grid" alignment="CENTER" gridLinesVisible="true">
+      			<rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="150.0" />
+      				<RowConstraints minHeight="10.0" prefHeight="150.0" />
+                  <RowConstraints minHeight="10.0" prefHeight="150.0" />
+      				<RowConstraints minHeight="10.0" prefHeight="150.0" />
+                  <RowConstraints minHeight="10.0" prefHeight="150.0" />
+      				<RowConstraints minHeight="10.0" prefHeight="150.0" />
+      			</rowConstraints>
+      			<columnConstraints>
+                  <ColumnConstraints minWidth="10.0" prefWidth="150.0" />
+      				<ColumnConstraints minWidth="10.0" prefWidth="150.0" />
+                  <ColumnConstraints minWidth="10.0" prefWidth="150.0" />
+      				<ColumnConstraints minWidth="10.0" prefWidth="150.0" />
+                  <ColumnConstraints minWidth="10.0" prefWidth="150.0" />
+      				<ColumnConstraints minWidth="10.0" prefWidth="150.0" />
+      			</columnConstraints>
+      		</GridPane>
+      	</children>
+      </StackPane>
+   </center>
+   <top>
+      <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <buttons>
+          <Button mnemonicParsing="false" onAction="#move" text="Move" />
+            <Button mnemonicParsing="false" onAction="#kill" text="Kill" />
+            <Button mnemonicParsing="false" onAction="#createNewZombie" text="Create New Zombie" />
+        </buttons>
+      </ButtonBar>
+   </top>
+</BorderPane>
