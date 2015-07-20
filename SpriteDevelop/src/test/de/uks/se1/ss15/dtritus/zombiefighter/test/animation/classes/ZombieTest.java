@@ -13,6 +13,8 @@ import de.uks.se1.ss15.dtritus.zombiefighter.animation.classes.Zombie;
 import de.uks.se1.ss15.dtritus.zombiefighter.animation.zombies.BloatedZombOneWalking;
 import javafx.application.Platform;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
@@ -32,7 +34,7 @@ public class ZombieTest {
 		});
 		// FxToolkit.showStage();
 
-		zombie = Zombie.createZombie(BloatedZombOneWalking.class, pane, new Rectangle2D(0, 0, 10, 10));
+		zombie = Zombie.createZombie(BloatedZombOneWalking.class, pane, pane.getBoundsInLocal());
 
 		assertEquals(zombie.getImageView().getBoundsInParent().getMinX(), 0, 0);
 		assertEquals(zombie.getImageView().getBoundsInParent().getMinY(), 0, 0);
@@ -46,6 +48,9 @@ public class ZombieTest {
 
 	private Scene loadNewScene() {
 		pane = new AnchorPane();
+		
+		pane.setMinHeight(10);
+		pane.setMinWidth(10);
 
 		Scene scene = new Scene(pane);
 
@@ -76,7 +81,12 @@ public class ZombieTest {
 		removeZombie();
 
 		assertEquals(0, pane.getChildren().size());
-		Zombie zombie = Zombie.createZombie(BloatedZombOneWalking.class, pane, new Rectangle2D(11, 12, 10, 10));
+		new Rectangle2D(11, 12, 10, 10);
+		
+		pane.setTranslateX(11);
+		pane.setTranslateY(12);
+		
+		Zombie zombie = Zombie.createZombie(BloatedZombOneWalking.class, pane, pane.getBoundsInParent());
 		assertEquals(pane.getChildren().get(0), zombie.getImageView());
 
 		assertEquals(zombie.getImageView().getBoundsInParent().getMinX(), 11, 0);

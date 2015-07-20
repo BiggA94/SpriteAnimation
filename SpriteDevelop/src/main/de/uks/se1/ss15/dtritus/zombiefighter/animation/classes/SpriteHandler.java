@@ -40,8 +40,8 @@ public class SpriteHandler<Tkey> {
 		return spriteMap;
 	}
 
-	public SpriteHandler(int offsetX, int offsetY, int rowCount, int columnCount, int separationWidth, int separationHeight, int width,
-			int heigth) {
+	public SpriteHandler(int offsetX, int offsetY, int rowCount, int columnCount, int separationWidth,
+			int separationHeight, int width, int heigth) {
 		this.offsetX = offsetX;
 		this.offsetY = offsetY;
 		this.rowCount = rowCount;
@@ -97,14 +97,14 @@ public class SpriteHandler<Tkey> {
 			// save key
 			lastKey = key;
 
-			if (lastIndex < 0) {
-				if (list != null) {
-					// A there is a Viewport in the current Animation, that was
-					// the last Viewport, start from there for a smooth
-					// Animation
-					lastIndex = list.indexOf(this.currentViewPortNum);
-				}
-			}
+			// For a smooth Animation between two different Animations (Only for
+			// cycles...)
+			/*
+			 * if (lastIndex < 0) { if (list != null) { // A there is a Viewport
+			 * in the current Animation, that was // the last Viewport, start
+			 * from there for a smooth // Animation lastIndex =
+			 * list.indexOf(this.currentViewPortNum); } }
+			 */
 
 			if (list.size() == 1) {
 				return this.getViewPort(list.get(0));
@@ -117,6 +117,7 @@ public class SpriteHandler<Tkey> {
 			}
 			Integer integer = list.get(nextIndex);
 			lastIndex = nextIndex;
+			System.err.println(nextIndex);
 			return this.getViewPort(integer);
 		} else {
 			// System.out.println("SpriteHandler.getNextViewPort()_nokey");
@@ -133,8 +134,8 @@ public class SpriteHandler<Tkey> {
 			}
 		}
 	}
-	
-	public int getMaxViewports(){		
+
+	public int getMaxViewports() {
 		return rowCount * columnCount;
 	}
 

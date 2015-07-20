@@ -129,7 +129,11 @@ public class SpriteHandlerTest {
 		this.handler.getSpriteMap().addEntry(ZFAnimation.PORT_DOWN, 0, 1, 2, 3, 4, 5, 6, 7);
 
 		Rectangle2D nextViewPort = this.handler.getNextViewPort(ZFAnimation.PORT_DOWN);
+		
+		assertEquals(handler.getViewPort(0), nextViewPort);
+		nextViewPort = this.handler.getNextViewPort(ZFAnimation.PORT_DOWN);
 		assertEquals(handler.getViewPort(1), nextViewPort);
+		
 	}
 
 	@Test

@@ -26,7 +26,6 @@ import java.util.zip.ZipOutputStream;
 import org.controlsfx.control.PopOver;
 import org.controlsfx.control.PopOver.ArrowLocation;
 
-import de.uks.se1.ss15.dtritus.zombiefighter.Main;
 import de.uks.se1.ss15.dtritus.zombiefighter.animation.classes.Zombie;
 import de.uks.se1.ss15.dtritus.zombiefighter.animation.zombies.BloatedZombOneWalking;
 import de.uks.se1.ss15.dtritus.zombiefighter.animation.zombies.DefaultZombie;
@@ -42,6 +41,7 @@ import de.uks.se1.ss15.dtritus.zombiefighter.mapEditor.model.WalkableTile;
 import de.uks.se1.ss15.dtritus.zombiefighter.mapEditor.model.util.TilePO;
 import de.uks.se1.ss15.dtritus.zombiefighter.mapEditor.model.util.TileSet;
 import de.uks.se1.ss15.dtritus.zombiefighter.networking.ServerMessageHandler;
+import de.uks.se1.ss15.dtritus.zombiefighter.test.animation.demo.Main;
 import de.uks.se1.ss15.dtritus.zombiefighter.test.mapEditor.controller.MapEditorControllerTest;
 import javafx.beans.property.adapter.JavaBeanStringProperty;
 import javafx.beans.property.adapter.JavaBeanStringPropertyBuilder;

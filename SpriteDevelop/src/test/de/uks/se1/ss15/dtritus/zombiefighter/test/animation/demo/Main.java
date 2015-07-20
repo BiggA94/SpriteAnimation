@@ -1,4 +1,4 @@
-package de.uks.se1.ss15.dtritus.zombiefighter;
+package de.uks.se1.ss15.dtritus.zombiefighter.test.animation.demo;
 	
 import javafx.application.Application;
 import javafx.stage.Stage;

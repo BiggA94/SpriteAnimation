@@ -5,10 +5,7 @@ import java.util.LinkedList;
 import de.uks.se1.ss15.dtritus.zombiefighter.animation.util.SpriteMap;
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
-import javafx.animation.Interpolator;
 import javafx.animation.Transition;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
@@ -38,9 +35,8 @@ public class SpriteAnimation<Tkey> {
 
 		@Override
 		protected void interpolate(double frac) {
-			// System.out.println(frac);
 			long animationsPerCycle = getAnimationsPerCycle(key);
-			long nextAnimation = Math.round(frac * animationsPerCycle -1) % animationsPerCycle;
+			long nextAnimation = ((Math.round(frac * (animationsPerCycle-1))) % animationsPerCycle);
 			if (nextAnimation != lastAnimation) {
 				lastAnimation = nextAnimation;
 				imageView.setViewport(spriteHandler.getNextViewPort(key));
@@ -124,7 +120,7 @@ public class SpriteAnimation<Tkey> {
 		return animationSets.getList(key);
 	}
 
-	private Duration moveDuration = Duration.seconds(2);
+	private Duration moveDuration = Duration.seconds(1);
 
 	public void setMoveDuration(Duration moveDuration) {
 		this.moveDuration = moveDuration;
@@ -151,10 +147,32 @@ public class SpriteAnimation<Tkey> {
 		this.cylceCount = cylceCount;
 	}
 
-	public void move(Tkey key) {
+	public void animate(Tkey key) {
 		Transition transition = new SpriteTransition(key);
 		transition.play();
 	}
+
+	protected volatile boolean finished = false;
+
+	public boolean isFinished(){
+		return finished;
+	}
+
+	public void animateAndWait(Tkey key) throws InterruptedException {
+			SpriteTransition transition = new SpriteTransition(key);
+			transition.setOnFinished(evt -> {
+				finished = true;
+				System.out.println("finished");
+			});
+			transition.play();
+			// TODO add timeout
+			while (!finished) {
+				// Wait for the animation to be finished
+				Thread.sleep(1);
+//				System.out.println("Waiting");
+			}
+	//		finished = false;
+		}
 
 	public void destroy(Tkey key) {
 		finished = false;
@@ -189,22 +207,5 @@ public class SpriteAnimation<Tkey> {
 				e.printStackTrace();
 			}
 		}
-	}
-
-	protected volatile boolean finished = false;
-
-	public void moveAndWait(Tkey key) throws InterruptedException {
-		Transition transition = new SpriteTransition(key);
-		transition.setOnFinished(evt -> {
-			finished = true;
-			System.out.println("finished");
-		});
-		transition.play();
-		// TODO add timeout
-		while (!finished) {
-			// Wait for the animation to be finished
-			Thread.sleep(1);
-		}
-		finished = false;
 	}
 }

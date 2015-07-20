@@ -5,6 +5,7 @@ import java.net.URL;
 
 import de.uks.se1.ss15.dtritus.zombiefighter.animation.util.ZFAnimation;
 import javafx.application.Platform;
+import javafx.geometry.Bounds;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -42,15 +43,15 @@ public abstract class Zombie {
 
 	protected abstract void initSpriteHandler();
 
-	public Zombie(ImageView imgView, Rectangle2D tileSize) {
+	public Zombie(ImageView imgView, Bounds tileSize) {
 		this.setImageView(imgView);
-		this.tileSize = tileSize;
+		this.tileSize = boundsToRectangle2d(tileSize);
 
 		initZombie();
 
 	}
 
-	public Zombie(Pane parentNode, Rectangle2D tileSize) {
+	public Zombie(Pane parentNode, Bounds tileSize) {
 		this(new ImageView(), tileSize);
 
 		if (!Platform.isFxApplicationThread()) {
@@ -84,6 +85,10 @@ public abstract class Zombie {
 
 	public void move(double fromX, double fromY, double toX, double toY) {
 		this.getWalkAnimation().move(fromX, fromY, toX, toY);
+	}
+	
+	public void move(Bounds bounds){
+		this.move(bounds.getMinX(), bounds.getMinY());		
 	}
 
 	/**
@@ -124,10 +129,10 @@ public abstract class Zombie {
 		this.imageView = imageView;
 	}
 
-	public static Zombie createZombie(Class<? extends Zombie> newClass, Node parentNode, Rectangle2D tileSize) {
+	public static Zombie createZombie(Class<? extends Zombie> newClass, Node parentNode, Bounds tileSize) {
 		Zombie ret = null;
 		try {
-			ret = newClass.getConstructor(Pane.class, Rectangle2D.class).newInstance(parentNode, tileSize);
+			ret = newClass.getConstructor(Pane.class, Bounds.class).newInstance(parentNode, tileSize);
 		} catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException
 				| IllegalArgumentException | InvocationTargetException e) {
 			e.printStackTrace();
@@ -168,5 +173,9 @@ public abstract class Zombie {
 		// Update WalkSpeed
 		walkAnimation.setDuration(duration);
 		return walkAnimation;
+	}
+	
+	private Rectangle2D boundsToRectangle2d(Bounds bounds){
+		return new Rectangle2D(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(), bounds.getHeight());		
 	}
 }

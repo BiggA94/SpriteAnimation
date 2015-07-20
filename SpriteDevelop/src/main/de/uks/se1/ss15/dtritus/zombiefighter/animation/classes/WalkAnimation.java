@@ -137,7 +137,7 @@ public class WalkAnimation {
 			translateTransition.setInterpolator(Interpolator.LINEAR);
 		}
 		
-		spriteAnimation.move(direction);
+		spriteAnimation.animate(direction);
 		translateTransition.play();
 
 	}

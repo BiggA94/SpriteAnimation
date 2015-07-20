@@ -29,6 +29,7 @@ public enum ZFAnimation {
 	UNDEFINED,
 	
 	// Animation when a Zombie dies	
-	DIE,
+	DIE, 
+	DEFAULT,
 
 }

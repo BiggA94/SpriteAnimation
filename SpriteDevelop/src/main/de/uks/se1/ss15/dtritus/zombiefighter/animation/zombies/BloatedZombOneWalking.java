@@ -2,17 +2,18 @@ package de.uks.se1.ss15.dtritus.zombiefighter.animation.zombies;
 
 import java.net.URL;
 
-import de.uks.se1.ss15.dtritus.zombiefighter.Main;
 import de.uks.se1.ss15.dtritus.zombiefighter.animation.classes.SpriteAnimation;
 import de.uks.se1.ss15.dtritus.zombiefighter.animation.classes.SpriteHandler;
 import de.uks.se1.ss15.dtritus.zombiefighter.animation.classes.Zombie;
 import de.uks.se1.ss15.dtritus.zombiefighter.animation.util.ZFAnimation;
+import de.uks.se1.ss15.dtritus.zombiefighter.test.animation.demo.Main;
+import javafx.geometry.Bounds;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.layout.Pane;
 
 public class BloatedZombOneWalking extends Zombie {
 
-	public BloatedZombOneWalking(Pane parentNode, Rectangle2D tileSize) {
+	public BloatedZombOneWalking(Pane parentNode, Bounds tileSize) {
 		super(parentNode, tileSize);
 	}
 

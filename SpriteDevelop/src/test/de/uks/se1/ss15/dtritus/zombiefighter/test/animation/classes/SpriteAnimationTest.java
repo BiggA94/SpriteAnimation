@@ -67,7 +67,7 @@ public class SpriteAnimationTest {
 
 		assertEquals(spriteAnimation.getList(ZFAnimation.WALK_DOWN).getFirst(), ViewportNumToMove, 0);
 
-		spriteAnimation.moveAndWait(ZFAnimation.WALK_DOWN);
+		spriteAnimation.animateAndWait(ZFAnimation.WALK_DOWN);
 
 		assertEquals(spriteHandler.getViewPort(ViewportNumToMove), spriteAnimation.getImageView().getViewport());
 	}

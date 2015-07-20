@@ -38,6 +38,8 @@
           <Button mnemonicParsing="false" onAction="#move" text="Move" />
             <Button mnemonicParsing="false" onAction="#kill" text="Kill" />
             <Button mnemonicParsing="false" onAction="#createNewZombie" text="Create New Zombie" />
+            <Button mnemonicParsing="false" onAction="#singleAnimation" text="Create SingleAnimation" />
+            <Button mnemonicParsing="false" onAction="#createAnimation" text="Create Full Animation" />
         </buttons>
       </ButtonBar>
    </top>
